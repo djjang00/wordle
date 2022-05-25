@@ -106,23 +106,35 @@ def play_wordle(dictionary):
 #simulates 1000 games of wordle with no inital guess and prints average score
 def average_random_guess_noinit():
     counter = 0
+    counter_two = 0
     for i in range(0, 1000):
-        counter += sim_wordle(dictionary)
-    print("The average over 1000 wordle games was", counter / 1000, "guesses")
+        num_guesses = sim_wordle(dictionary)
+        counter += num_guesses
+        if num_guesses != 7:
+            counter_two +=1
+    print("The average over 1000 wordle games was", counter / 1000, "guesses with success rate of", counter_two / 1000)
 
 #simulates 1000 games of wordle with inital guess and prints average score
 def average_random_guess_init(starting_word):
     counter = 0
+    counter_two = 0
     for i in range(0, 1000):
-        counter += sim_wordle(dictionary, starting_word)
-    print("The average over 1000 wordle games with inital guess", starting_word, "was", counter / 1000, "guesses")
+        num_guesses = sim_wordle(dictionary, starting_word)
+        counter += num_guesses
+        if num_guesses != 7:
+            counter_two +=1
+    print("The average over 1000 wordle games with inital guess", starting_word, "was", counter / 1000, "guesses with success rate of", counter_two / 1000)
 
 #simulates 1000 games of wordle with scoring system and inital guess and prints average score
 def average_random_guess_init_score(starting_word):
     counter = 0
+    counter_two = 0
     for i in range(0, 1000):
-        counter += sim_wordle_score(dictionary, starting_word)
-    print("The average over 1000 wordle games with inital guess", starting_word, "with score method was", counter / 1000, "guesses")
+        num_guesses = sim_wordle_score(dictionary, starting_word)
+        counter += num_guesses
+        if num_guesses != 7:
+            counter_two +=1
+    print("The average over 1000 wordle games with inital guess", starting_word, "with score method was", counter / 1000, "guesses with success rate of", counter_two / 1000)
 
 #get the next suggested word based on score
 def get_next_suggest(possible_list):
@@ -171,7 +183,7 @@ def play_wordle_score(dictionary):
 
 #play_wordle(dictionary)
 #average_random_guess_noinit()
-average_random_guess_init("crate")
+#average_random_guess_init("crate")
 #average_random_guess_init_score("crate")
 #play_wordle_score(dictionary)
 
